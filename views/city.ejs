@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather</title>
+    <link href="/css/style.css" rel="stylesheet">
+    <script src="https://api-maps.yandex.ru/v3/?apikey=5cf5cb15-a901-4d22-ba4c-f85f2c7d7248&lang=ru_RU"></script>
+    <script>
+        initMap();
+
+        async function initMap() {
+            await ymaps3.ready;
+
+            const {YMap, YMapDefaultSchemeLayer} = ymaps3;
+
+            const map = new YMap(
+                document.getElementById('map'),
+                {
+                    location: {
+                        center: [ <%= response_weather.data.coord.lon %>, <%= response_weather.data.coord.lat %>],
+                        zoom: 10
+                    }
+                }
+            );
+
+            map.addChild(new YMapDefaultSchemeLayer());
+        }
+    </script>
+
+</head>
+<body>
+    <header>
+        <img class="icon" src="/images/1.png">
+        <h1 class="header_text">Welcome to Weather</h1>
+    </header>
+
+    <main>
+        <div class="main_content">
+            <div class="content">
+                <h2>Weather for <%= response_weather.data.name %> today</h2>
+                <p>Temperature = <%= response_weather.data.main.temp %></p>
+                <p>Visibility = <%= response_weather.data.visibility %></p>
+                <p>Coordinates = <%= response_weather.data.coord.lon %> and <%= response_weather.data.coord.lat %></p>
+                <p>Feels-like temparature = <%= response_weather.data.main.feels_like %></p>
+                <p>Humidity = <%= response_weather.data.main.humidity %></p>
+                <p>Pressure = <%= response_weather.data.main.pressure %></p>
+                <p>Wind speed = <%= response_weather.data.wind.speed %></p>
+                <p>Country = <%= response_weather.data.sys.country %></p>
+            </div>
+
+            <div class="map">
+                <div id="map" style="width: 700px; height: 400px">
+                
+                </div>
+            </div>
+        </div>
+
+        <div class="time">
+            <div class="sunrise">
+                Sunrise: <%= response_bit.data.data[0].sunrise %>
+            </div>
+            <div class="sunset">
+                Sunset : <%= response_bit.data.data[0].sunset %>
+            </div>
+        </div>
+
+       
+
+
+    </main>
+
+    <footer>app made by heyoSSam</footer>
+</body>
+</html>

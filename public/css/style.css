@@ -1,0 +1,49 @@
+body{
+    width:50%;
+    margin: 0 auto; 
+    background-color: black;
+    color: white;
+}
+
+.icon{
+    width:90px;
+    height:90px;
+    position: absolute;
+}
+
+.header_text{
+    margin-bottom: 100px;
+}
+
+.submit{
+    background-color: white;
+    padding: 5px;
+    border-radius:3px;
+    border: black solid 1px;
+}
+
+input{
+    height: 50px;
+    border-radius: 3px;
+    border: black solid 1px;
+}
+
+.main_content{
+    display:flex;
+}
+
+.map{
+    margin-left: 20px;
+    
+}
+
+.time{
+    margin-top:50px;
+    font-size: 32px;
+    display: flex;
+    justify-content: space-between;
+}
+footer{
+    position: fixed;
+    bottom:0;
+}
